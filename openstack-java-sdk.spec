@@ -1,14 +1,14 @@
 # % global git_hash git10597f7
 
 Name:           openstack-java-sdk
-Version:        3.1.3
-Release:        2%{?git_hash}%{?dist}
+Version:        3.2.3
+Release:        1%{?git_hash}%{?dist}
 Summary:        OpenStack Java SDK
 
 Group:          Development/Libraries
 License:        ASL 2.0
-URL:            https://github.com/woorea/openstack-java-sdk
-Source0:        https://github.com/woorea/openstack-java-sdk/archive/openstack-java-sdk-3.1.3.tar.gz
+URL:            https://github.com/woorea/%{name}
+Source0:        https://github.com/woorea/%{name}/archive/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -146,6 +146,20 @@ Summary:        OpenStack Java Swift Model
 This package contains the %{summary}.
 
 
+%package -n openstack-java-heat-client
+Summary:        OpenStack Java Heat Client
+
+%description -n openstack-java-heat-client
+This package contains the %{summary}.
+
+
+%package -n openstack-java-heat-model
+Summary:        OpenStack Java Heat Model
+
+%description -n openstack-java-heat-model
+This package contains the %{summary}.
+
+
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 %mvn_package ":{openstack-java-sdk,openstack-client-connectors}" __noinstall
@@ -235,8 +249,19 @@ This package contains the %{summary}.
 %doc README.textile
 %dir %{_javadir}/%{name}
 
+%files -n openstack-java-heat-client -f .mfiles-heat-client
+%license LICENSE.txt
+%doc README.textile
+
+%files -n openstack-java-heat-model -f .mfiles-heat-model
+%license LICENSE.txt
+%doc README.textile
+%dir %{_javadir}/%{name}
 
 %changelog
+* Mon Jul 23 2018 Dominik Holler <dholler@redhat.com> - 3.2.3-1
+- update to openstack-java-sdk-3.2.3
+
 * Tue Jun 12 2018 Sandro Bonazzola <sbonazzo@redhat.com> - 3.1.3-2
 - Changed build requirements allowing to build on EL7
 - Fixed rpmlint issues
