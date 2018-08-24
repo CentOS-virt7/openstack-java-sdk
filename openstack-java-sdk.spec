@@ -1,7 +1,7 @@
 # % global git_hash git10597f7
 
 Name:           openstack-java-sdk
-Version:        3.2.3
+Version:        3.2.4
 Release:        1%{?git_hash}%{?dist}
 Summary:        OpenStack Java SDK
 
@@ -259,6 +259,9 @@ This package contains the %{summary}.
 %dir %{_javadir}/%{name}
 
 %changelog
+* Tue Aug 14 2018 Dominik Holler <dholler@redhat.com> - 3.2.4-1
+- update to openstack-java-sdk-3.2.4
+
 * Mon Jul 23 2018 Dominik Holler <dholler@redhat.com> - 3.2.3-1
 - update to openstack-java-sdk-3.2.3
 
