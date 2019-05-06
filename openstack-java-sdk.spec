@@ -1,11 +1,10 @@
 # % global git_hash git10597f7
 
 Name:           openstack-java-sdk
-Version:        3.2.5
+Version:        3.2.7
 Release:        1%{?git_hash}%{?dist}
 Summary:        OpenStack Java SDK
 
-Group:          Development/Libraries
 License:        ASL 2.0
 URL:            https://github.com/woorea/%{name}
 Source0:        https://github.com/woorea/%{name}/archive/%{name}-%{version}.tar.gz
@@ -16,7 +15,6 @@ BuildRequires:  java-devel >= 1:1.7.0
 BuildRequires:  jpackage-utils >= 0:1.7.3
 BuildRequires:  maven-local
 BuildRequires:  jboss-annotations-1.1-api
-BuildRequires:  maven-gpg-plugin
 BuildRequires:  jakarta-commons-httpclient
 BuildRequires:  sonatype-oss-parent
 BuildRequires:  mvn(org.codehaus.jackson:jackson-mapper-asl)
@@ -28,7 +26,6 @@ OpenStack client implementation in Java.
 
 %package -n openstack-java-javadoc
 Summary:        Java docs for OpenStack Java SDK
-Group:          Documentation
 
 %description -n openstack-java-javadoc
 This package contains the API documentation for the OpenStack Java SDK.
@@ -166,7 +163,7 @@ This package contains the %{summary}.
 
 
 %build
-%mvn_build -s -- -P "!console,!examples,!jersey2,resteasy" -DskipTests -Dskip.sign=true
+%mvn_build -s -- -P "!console,!examples,!jersey2,!jersey,resteasy" -DskipTests
 
 
 %install
@@ -259,6 +256,15 @@ This package contains the %{summary}.
 %dir %{_javadir}/%{name}
 
 %changelog
+* Fri May 03 2019 Dominik Holler <dholler@redhat.com> - 3.2.7-1
+- update to openstack-java-sdk-3.2.7
+
+* Fri May 03 2019 Dominik Holler <dholler@redhat.com> - 3.2.6-1
+- update to openstack-java-sdk-3.2.6
+
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Thu Nov 22 2018 Dominik Holler <dholler@redhat.com> - 3.2.5-1
 - update to openstack-java-sdk-3.2.5
 
